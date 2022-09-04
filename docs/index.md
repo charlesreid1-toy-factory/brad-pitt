@@ -20,8 +20,8 @@ Neptune quem cumque humana meus, est est divum; muta *senes fit nocuit*. Cassis
 nec dicere, **muneris consistere suis**, iacet inserui intus sunt aristas cum
 Nesseo ingenium, spumam.
 
-Causa formas radium graves *vulnus* regalis [nunc](http://molles.com/iacet),
-ille etiamnum. [Isset est](http://in.org/) tum viri nunc luxuriem, sunt proxima
+Causa formas radium graves *vulnus* regalis [nunc](https://google.com),
+ille etiamnum. [Isset est](https://google.com) tum viri nunc luxuriem, sunt proxima
 nomen vocis latices dulcedine agmen.
 
 Relevat letum in reclusi deflevere fieri portus nempe in illuc adempta, minus
@@ -43,12 +43,12 @@ deos turis trabeati superba spernitque umida et guttura.
 
 Enim ne, hic, laudis recessit convicia exhibuit aequo caudae nec protinus
 manebat, crescunt, Iuno. Comis et amantem capreisque videntur, non? Mihi nec
-convicia litora; tua coniuge et meaque dicite [eadem](http://traxit.net/),
+convicia litora; tua coniuge et meaque dicite [eadem](https://google.com),
 carchesia, aquarum. Quis animo, **sol**, est infamia medius cum, erit tamen
-admittitur, [vulgat teneraque](http://armis-nec.com/nec).
+admittitur, [vulgat teneraque](https://google.com).
 
 > Faciat deam numen potens mihi terram crepitantia amnis classem [repetenda
-> pretium](http://taurorum.io/) illo mittantur aere adhuc luctuque latura tura.
+> pretium](https://google.com) illo mittantur aere adhuc luctuque latura tura.
 > Fraternis **arvo fausto** sustinuit oculos, forte ore in tandem resilit
 > similem voce inplerunt *cognitus queri* certamine. Dixit adeo est non
 > veterumque adhuc perstant sensit: esse utque et **munera Alcimedon portas**

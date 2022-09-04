@@ -8,6 +8,8 @@ copyright: Copyright &copy; 2022 Chaz Reid
 
 nav:
   - Index: index.md
+  - Fight Club: fightclub.md
+  - Interview with a Vampire: interview.md
 
 theme:
   name: material
