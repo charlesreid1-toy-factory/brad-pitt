@@ -1,4 +1,4 @@
-.PHONY: clean clean-build clean-pyc clean-test lint lint/flake8 lint/black docs serve-docs deploy-docs test test-all install
+.PHONY: clean clean-build clean-pyc clean-test lint lint/flake8 lint/black docs serve-docs deploy-docs test test-all install release_major release_major_real release_minor release_minor_real release_patch release_patch_real
 
 .DEFAULT_GOAL := help
 
@@ -72,11 +72,23 @@ install: clean ## install the package to the active Python's site-packages
 
 ############ Release
 
-#release: dist ## package and upload a release
-#	@echo "twine upload dist/*"
-#
-#dist: clean ## builds source and wheel package
-#	python setup.py sdist
-#	python setup.py bdist_wheel
-#	ls -l dist
+release_major: ## dry run: cut a major release
+	bump2version --dry-run --verbose bump2version major
+	@echo "Use the 'make release_major_real' rule to commit the proposed changes."
 
+release_major_real: ## cut a major release
+	bump2version --verbose bump2version major
+
+release_minor: ## dry run: cut a minor release
+	bump2version --dry-run --verbose bump2version minor
+	@echo "Use the 'make release_minor_real' rule to commit the proposed changes."
+
+release_minor_real: ## cut a minor release
+	bump2version --verbose bump2version minor
+
+release_patch: ## dry run: cut a patch release
+	bump2version --dry-run --verbose bump2version patch
+	@echo "Use the 'make release_patch_real' rule to commit the proposed changes."
+
+release_patch_real: ## cut a patch release
+	bump2version --verbose bump2version patch
