@@ -116,11 +116,13 @@ pytest -vs tests/
 
 This example has three purposes:
 
-* The first purpose is to show yet another Python package example. There is no one way to
-  create a Python package, so additional examples implementing additional features
-  (or disabling unneeded features) can help benfit others in deciding how to package
-  their own Python code. (These are also ***toy repositories***, and implementing too many
-  features or best practices can be too overwhelming!)
+* The first purpose is to show yet another Python package example. There is no one
+  way to create a Python package, everyone's needs are different, so implementing
+  additional features or disabling other features can help others decide how to
+  package their own Python code.
+
+* (The toy repositories in [charlesreid1-toy-factory](https://github.com/charlesreid1-toy-factory/)
+  are also simple enough that they can only demonstrate a few best practices at a time.)
 
 * The second purpose is to demonstrate best practices for Python libraries that will have
   new versions released frequently, and show how to preserve documentation for prior
