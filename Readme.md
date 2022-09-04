@@ -98,16 +98,20 @@ pytest -vs tests/
 
 ## What is the point of this example?
 
-The point is twofold:
+This example has three purposes:
 
-* Presents a good pattern for having operational tooling that utilizes
-  object-oriented code that can be maintained, tracked, and updated
-  as part of a core library. This makes operational tooling more reliable,
-  more useful, and easier to write tests for.
+* The first purpose is to show yet another Python package example. There is no one way to
+  create a Python package, so additional examples implementing additional features
+  (or disabling unneeded features) can help benfit others in deciding how to package
+  their own Python code. (These are also ***toy repositories***, and implementing too many
+  features or best practices can be too overwhelming!)
 
-* Demonstrates some techniques for writing good tests, including
-  having useful test utilities. Includes some good patterns from
-  tests in the DSS data store.
+* The second purpose is to demonstrate best practices for Python libraries that will have
+  new versions released frequently, and show how to preserve documentation for prior
+  versions alongside documentation for the current version.
+
+* The third purpose is to show how the principles of HubFlow can be implemented in practice,
+  alongside tools like bump2version and mike.
 
 
 ## What is not included in this example?
