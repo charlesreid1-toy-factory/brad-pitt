@@ -1,4 +1,5 @@
-.PHONY: clean clean-build clean-pyc clean-test dist docs help install lint lint/flake8 lint/black
+.PHONY: clean clean-build clean-pyc clean-test lint lint/flake8 lint/black docs serve-docs deploy-docs test test-all install
+
 .DEFAULT_GOAL := help
 
 define PRINT_HELP_PYSCRIPT
@@ -22,14 +23,11 @@ clean: clean-build clean-pyc clean-test ## remove all build, test, and Python ar
 clean-build: ## remove build artifacts
 	rm -fr build/
 	rm -fr dist/
-	rm -fr .eggs/
-	find . -name '*.egg-info' -exec rm -fr {} +
-	find . -name '*.egg' -exec rm -f {} +
+	rm -fr .eggs *.egg*
 
 clean-pyc: ## remove Python file artifacts
 	find . -name '*.pyc' -exec rm -f {} +
 	find . -name '*.pyo' -exec rm -f {} +
-	find . -name '*~' -exec rm -f {} +
 	find . -name '__pycache__' -exec rm -fr {} +
 
 clean-test: ## remove test and coverage artifacts
@@ -47,13 +45,7 @@ lint/black: ## check style with black
 
 lint: lint/flake8 lint/black ## check style
 
-############ Test
-
-test: ## run tests quickly with the default Python
-	pytest
-
-test-all: ## run tests on every Python version with tox
-	tox
+############ Docs
 
 docs: ## generate mkdocs HTML documentation
 	rm -fr site/*
@@ -64,6 +56,14 @@ serve-docs: docs ## serve the docs
 
 deploy-docs: docs ## serve the docs
 	mkdocs gh-deploy --clean
+
+############ Test
+
+test: ## run tests quickly with the default Python
+	pytest
+
+test-all: ## run tests on every Python version with tox
+	tox
 
 ############ Build
 
