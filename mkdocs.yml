@@ -57,3 +57,8 @@ markdown_extensions:
 plugins:
   - search:
       lang: en
+  - mike:
+      # These fields are all optional; the defaults are as below...
+      canonical_version: null
+      version_selector: true
+      css_dir: css
