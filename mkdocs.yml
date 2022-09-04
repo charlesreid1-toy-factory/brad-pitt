@@ -10,6 +10,8 @@ nav:
   - Index: index.md
   - Fight Club: fightclub.md
   - Interview with a Vampire: interview.md
+  - Developers:
+    - API Reference: api.md
 
 theme:
   name: material
@@ -49,6 +51,7 @@ markdown_extensions:
       baselevel: 2
       permalink: true
       slugify: !!python/name:pymdownx.slugs.uslugify
+  - mkautodoc
 
 plugins:
   - search:
