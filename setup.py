@@ -9,7 +9,6 @@ with open("requirements-dev.txt") as f:
 setup(
     name="brad-pitt",
     version=__version__,
-    version="0.1.0",
     description="a super simple python package demonstrating best practices for versioning",
     author="Chaz Reid",
     author_email="charlesreid1.ancestry@ancestry.com",
