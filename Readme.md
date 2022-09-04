@@ -122,10 +122,13 @@ pytest -vs tests/
 
 This example has three purposes:
 
-* The first purpose is to show yet another Python package example. There is no one
+* The first purpose is to show (yet another) Python package example. There is no one
   way to create a Python package, everyone's needs are different, so implementing
   additional features or disabling other features can help others decide how to
   package their own Python code.
+  The mkdocs-material documentation is not only versioned, but it looks as good as
+  Brad Pitt's abs:
+  <https://charlesreid1-toy-factory.github.io/brad-pitt/latest>
 
 * (The toy repositories in [charlesreid1-toy-factory](https://github.com/charlesreid1-toy-factory/)
   are also simple enough that they can only demonstrate a few best practices at a time.)
