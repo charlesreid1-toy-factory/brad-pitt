@@ -1,4 +1,4 @@
-.PHONY: clean clean-build clean-pyc clean-test coverage dist docs help install lint lint/flake8 lint/black
+.PHONY: clean clean-build clean-pyc clean-test dist docs help install lint lint/flake8 lint/black
 .DEFAULT_GOAL := help
 
 define PRINT_HELP_PYSCRIPT
@@ -15,7 +15,9 @@ export PRINT_HELP_PYSCRIPT
 help:
 	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
-clean: clean-build clean-pyc clean-test ## remove all build, test, coverage and Python artifacts
+############ Clean
+
+clean: clean-build clean-pyc clean-test ## remove all build, test, and Python artifacts
 
 clean-build: ## remove build artifacts
 	rm -fr build/
@@ -33,8 +35,9 @@ clean-pyc: ## remove Python file artifacts
 clean-test: ## remove test and coverage artifacts
 	rm -fr .tox/
 	rm -f .coverage
-	rm -fr htmlcov/
 	rm -fr .pytest_cache
+
+############ Lint
 
 lint/flake8: ## check style with flake8
 	flake8 bradpitt tests
@@ -43,6 +46,8 @@ lint/black: ## check style with black
 	black --check bradpitt tests
 
 lint: lint/flake8 lint/black ## check style
+
+############ Test
 
 test: ## run tests quickly with the default Python
 	pytest
@@ -54,16 +59,24 @@ docs: ## generate mkdocs HTML documentation
 	rm -fr site/*
 	mkdocs build --clean
 
-servedocs: docs ## serve the docs
-	mkdocs serve
+serve-docs: docs ## serve the docs
+	mkdocs serve --clean
 
-release: dist ## package and upload a release
-	@echo "twine upload dist/*"
+deploy-docs: docs ## serve the docs
+	mkdocs gh-deploy --clean
 
-dist: clean ## builds source and wheel package
-	python setup.py sdist
-	python setup.py bdist_wheel
-	ls -l dist
+############ Build
 
 install: clean ## install the package to the active Python's site-packages
 	python setup.py install
+
+############ Release
+
+#release: dist ## package and upload a release
+#	@echo "twine upload dist/*"
+#
+#dist: clean ## builds source and wheel package
+#	python setup.py sdist
+#	python setup.py bdist_wheel
+#	ls -l dist
+
