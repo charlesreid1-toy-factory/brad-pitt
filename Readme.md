@@ -74,9 +74,10 @@ Congrats! You successfully used the bradd-pitt library!
 
 ### .bumpversion.cfg
 
-(Note: bumpversion has been replaced with bump2version, and the `requirements-dev.txt`
-file should specify the library being installed. Also, `bumpversion` should now point
-to `bump2version` on PyPI.)
+(Note: the `bumpversion` library has been deprecated and replaced with `bump2version`.
+You should not have to change anything, since the `requirements-dev.txt` will handle it.
+Also, `bumpversion` should now point to `bump2version` on PyPI, so `pip install bumpversion`
+will install `bump2version`.)
 
 The bump2version configuration file is at `.bumpversion.cfg`.
 
