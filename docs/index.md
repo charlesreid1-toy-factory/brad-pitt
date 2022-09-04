@@ -2,8 +2,9 @@
 
      Sed pellentesque quam neque, nec consequat erat lacinia at. Ut dignissim nec ipsum eget volutpat. Nullam sem
      felis, venenatis sed magna a, dictum convallis mi. Nunc non felis tincidunt, dictum erat a, scelerisque lacus.
-     Phasellus interdum nisl in egestas auctor. Praesent posuere purus eu justo imperdiet laoreet. Vestibulum ante
-     ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.
+
+     **If you are looking for the API documentation for the `brad_pitt` library, head over to the [API Reference](api.md)
+     page.**
 
 # Et frontem nobis pelates
 
