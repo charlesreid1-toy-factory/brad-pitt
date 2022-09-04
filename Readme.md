@@ -54,8 +54,7 @@ $ bp
 You are about to use the bradd-pitt library
  - Using Alpha class
  - Using Beta class
- - Brad Pitt fact: During the filming of one of his most popular movies Seven, Brad Pitt broke his arm. Instead of
-   delaying the filming due to this unfortunate event, the director had the injury written into the script.
+ - Brad Pitt fact: During the filming of one of his most popular movies Seven, Brad Pitt broke his arm. Instead of delaying the filming due to this unfortunate event, the director had the injury written into the script.
 Congrats! You successfully used the bradd-pitt library!
 ```
 
