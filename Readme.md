@@ -72,21 +72,36 @@ Congrats! You successfully used the bradd-pitt library!
 
 * `docs/` directory: contains the Markdown files for the mkdocs documentation.
 
-### .bumpversion.cfg
+* `.bumpversion.cfg`: this configuration file is for `bump2version` (which has
+  superseded `bumpversion`). This updates the version number in `src/__init__.py`
+  and in `Readme.md`. By default it will create a commit and a git tag of the form
+  `v0.0.0`.
 
-(Note: the `bumpversion` library has been deprecated and replaced with `bump2version`.
-You should not have to change anything, since the `requirements-dev.txt` will handle it.
-Also, `bumpversion` should now point to `bump2version` on PyPI, so `pip install bumpversion`
-will install `bump2version`.)
+* `Makefile`: provides several convenience methods for performing tasks in the repo
 
-The bump2version configuration file is at `.bumpversion.cfg`.
+### Makefile
 
-It updates the version number in `src/__init__.py` (which is where `setup.py` gets
-the version number from), and in the Readme (which contains a shield with the
-version number).
+```
+$ make help
 
-It will also create a commit with the version bump, and create a new tag
-that is in the form `vX.Y.Z`.
+clean                remove all build, test, and Python artifacts
+clean-build          remove build artifacts
+clean-pyc            remove Python file artifacts
+clean-test           remove test and coverage artifacts
+lint                 check style
+docs                 generate mkdocs HTML documentation
+serve-docs           serve the docs
+deploy-docs          serve the docs
+test                 run tests quickly with the default Python
+test-all             run tests on every Python version with tox
+install              install the package to the active Python's site-packages
+release_major        dry run: cut a major release
+release_major_real   cut a major release
+release_minor        dry run: cut a minor release
+release_minor_real   cut a minor release
+release_patch        dry run: cut a patch release
+release_patch_real   cut a patch release
+```
 
 ### Tests
 
@@ -95,6 +110,7 @@ Tests can be run with pytest:
 ```
 pytest -vs tests/
 ```
+
 
 ## What is the point of this example?
 
@@ -114,14 +130,20 @@ This example has three purposes:
   alongside tools like bump2version and mike.
 
 
+## What other goodies are shown off in this example?
+
+This example also demonstrates:
+
+* How to bundle a JSON data file (or data directory) with your Python package, so that
+  your library can have data files available alongside code files.
+
+* How to implement a minimal CLI tool with Click that can use the library (both the classes
+  provided by the library, and the data bundled with the library).
+
+
 ## What is not included in this example?
 
-Thisexample can be taken a step further.
+This example implements only the barest minimum CLI tool with Click.
 
-The pattern that we are providing in this repository can be thought of as
-an additional operations layer that can be added alongside an existing
-library. This is useful for any software library that also has associated
-infrastructure, and operational tooling is required to manage or interact
-with existing resources, create new resources, or remove resources.
-
+This example does **not** implement any best practices for building a good CLI tool.
 
