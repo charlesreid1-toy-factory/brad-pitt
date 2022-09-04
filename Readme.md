@@ -20,6 +20,12 @@ packages:
 This repo was created from 
 [audreyfeldroy/cookiecutter-pypackage](https://github.com/audreyfeldroy/cookiecutter-pypackage).
 
+The latest documentation can be obtained by appending `/latest/` to the end of the usual
+GitHub Pages URL, or by adding `/major.minor` to the URL:
+
+* <https://charlesreid1-toy-factory.github.io/brad-pitt/latest/>
+* <https://charlesreid1-toy-factory.github.io/brad-pitt/0.2/>
+
 
 ## Quick Start
 
