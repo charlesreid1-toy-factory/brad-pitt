@@ -15,5 +15,8 @@ packages:
 * [mkautodoc](https://github.com/tomchristie/mkautodoc)
   to automatically generate documentation of a Python API
 
+This repo was created from 
+[audreyfeldroy/cookiecutter-pypackage](https://github.com/audreyfeldroy/cookiecutter-pypackage).
 
 ## Quick Start
+
