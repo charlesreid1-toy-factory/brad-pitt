@@ -11,6 +11,7 @@ nav:
   - Fight Club: fightclub.md
   - Interview with a Vampire: interview.md
   - Developers:
+    - Release Process: release.md
     - API Reference: api.md
 
 theme:
