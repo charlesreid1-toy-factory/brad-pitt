@@ -1,0 +1,4 @@
+#!/bin/bash
+set -a
+
+BRAD_PITT_HOME="${HOME}/brad-pitt"
