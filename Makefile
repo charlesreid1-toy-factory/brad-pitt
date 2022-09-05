@@ -4,6 +4,8 @@ include common.mk
 
 .DEFAULT_GOAL := help
 
+CB := $(shell git branch --show-current)
+
 define PRINT_HELP_PYSCRIPT
 import re, sys
 
