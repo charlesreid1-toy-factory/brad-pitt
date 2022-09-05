@@ -3,4 +3,4 @@ from .beta import Beta
 from .error import PittFall
 
 
-__version__ = "0.5.4"
+__version__ = "0.5.5"
