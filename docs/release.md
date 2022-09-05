@@ -16,7 +16,7 @@ Hotfixes and emergency patches are released by bumping the patch version number.
 These can complicate the branches, so we treat them separately. See
 [Hotfixes](hotfixes.md).
 
-For documentation releases, see [Documentation Releases](documentation_releases.md).
+For documentation and artifact releases, see [Artifact Release Process](artifact_releases.md).
 
 
 # Best Case Scenario
