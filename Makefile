@@ -103,8 +103,8 @@ bump_minor_version: ## bump minor version
 	@echo
 	@echo "About to bump the minor version"
 	@echo
-	#bump2version --dry-run --verbose bump2version mminor
-	bump2version --verbose bump2version mminor
+	#bump2version --dry-run --verbose bump2version minor
+	bump2version --verbose bump2version minor
 
 bump_patch_version: ## bump patch version
 	@echo
