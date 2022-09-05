@@ -128,9 +128,9 @@ if [[ ${DRYRUN:-} == true ]]; then
 else
 	mkdocs build --strict --clean
 	if [[ ${TAGONLY:-} == false ]]; then
-		mike deploy $(cat VERSION) latest
+		mike deploy ${MIKE_TAG} latest
 	else
-		mike deploy $(cat VERSION)
+		mike deploy ${MIKE_TAG}
 	fi
 	git push ${REMOTE} gh-pages
 fi
@@ -169,3 +169,5 @@ else
 fi
 set +x
 echo "Done. Success. Thank you. Goodbye."
+# (why is this necessary? we always end up in detached gh/develop head state)
+git checkout develop
