@@ -85,9 +85,19 @@ Congrats! You successfully used the bradd-pitt library!
 
 * `Makefile`: provides several convenience methods for performing tasks in the repo
 
+* Other files with all-capital names:
+    * `CHANGELOG` - keeps track of what has changed in each version of the code
+    * `LICENSE` - terms of use for this code
+    * `MANIFEST.in` - manifest file listing data files that will be bundled with this package
+    * `VERSION` - contains the version of this library (updated automatically, do not change)
+
 ### Makefile
 
+The makefile is used to perform various actions:
+
 ```
+$ source environment
+
 $ make help
 
 clean                remove all build, test, and Python artifacts
@@ -100,13 +110,16 @@ serve-docs           serve the docs
 deploy-docs          serve the docs
 test                 run tests quickly with the default Python
 test-all             run tests on every Python version with tox
-install              install the package to the active Python's site-packages
-release_major        dry run: cut a major release
-release_major_real   cut a major release
-release_minor        dry run: cut a minor release
-release_minor_real   cut a minor release
-release_patch        dry run: cut a patch release
-release_patch_real   cut a patch release
+build                build and install the package into the active Python's site-packages
+dryrun_bump_major_version bump major version
+bump_major_version   bump major version
+dryrun_bump_minor_version bump major version
+bump_minor_version   bump minor version
+dryrun_bump_patch_version bump major version
+bump_patch_version   bump patch version
+dryrun_release       dry run: tag and cut a release
+release              tag and cut a release
+release_tag          only tag the release, do not cut it
 ```
 
 ### Tests

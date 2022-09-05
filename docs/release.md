@@ -16,6 +16,8 @@ Hotfixes and emergency patches are released by bumping the patch version number.
 These can complicate the branches, so we treat them separately. See
 [Hotfixes](hotfixes.md).
 
+For documentation releases, see [Documentation Releases](documentation_releases.md).
+
 
 # Best Case Scenario
 
@@ -108,16 +110,13 @@ For example, if the branch preparing for release `X.Y` were called
 ```
 
 We are now ready to bump the version number with `bump2version`. There are
-several make rules provided to do that (the `dryrun` rule just prints what
-`bump2version` would change, the other rule makes the change and commits it).
+several make rules provided to do that:
 
 ```
 # if bumping major version
-make dryrun_bump_major_version
 make bump_major_version
 
 # if bumping minor version
-make dryrun_bump_minor_version
 make bump_minor_version
 ```
 
@@ -153,28 +152,21 @@ The release script takes two arguments:
 * The source (promote from) branch, usually `develop`
 * The destination (promote to) branch, usually `main`
 
-If those are your two arguments, do a dry run of the release:
-
-```
-make dryrun_release
-```
-
-Finally, do the actual release:
+If those are your two arguments, punch it:
 
 ```
 make release
 ```
 
 
-## Artifacts
+## Artifact Releases
 
-What about uploading software artifacts, like eggs or tar files or packages?
+There is another important consideration as part of the release process,
+which is, how and when to generate and upload artifacts, such as
+eggs, tar files, packages, or documentation.
 
-Those tasks should be performed before running the release script, or - better -
-they should be in the release script, and they should be executed before the 
-git tag is created and pushed. (That way, if there is a problem creating the
-artifacts, a fix can be incorporated as part of the release, or if a faulty
-artifact is uploaded, the version number can be bumped as needed.)
+To address these questions, visit the [Artifact Release Process](artifact_releases.md)
+page.
 
 
 ## What About the Next Major/Minor Version?

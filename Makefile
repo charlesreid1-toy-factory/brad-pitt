@@ -57,15 +57,23 @@ requirements-dev:
 
 ############ Docs
 
-docs: ## generate mkdocs HTML documentation
+build-docs: ## build local copy of mkdocs documentation
 	rm -fr site/*
 	mkdocs build --clean
 
-serve-docs: docs ## serve the docs
+serve-docs: docs ## serve local copy of mkdocs documentation
 	mkdocs serve --clean
 
-deploy-docs: docs ## serve the docs
-	mkdocs gh-deploy --clean
+# This should be handled by the scripts/release.sh script
+#mike-deploy-docs: ## deploy this version of the docs using mike
+#	VERS=$(shell cat VERSION)
+#	@echo "Deploying docs for version $(VERS)"
+#	mike deploy $(VERS)
+#
+#mike-deploy-docs-latest: ## deploy this version of the docs and add a latest shortcut
+#	VERS=$(shell cat VERSION)
+#	@echo "Deploying docs for version $(VERS) (with latest shortcut)"
+#	mike deploy $(VERS) latest
 
 ############ Test
 
@@ -84,59 +92,35 @@ buildtest: clean build test
 
 ############ Release
 
-dryrun_bump_major_version: ## bump major version
-	@echo
-	@echo "Dry run bump the major version"
-	@echo
-	bump2version --dry-run --verbose bump2version major
-
 bump_major_version: ## bump major version
 	@echo
 	@echo "About to bump the major version"
 	@echo
+	#bump2version --dry-run --verbose bump2version major
 	bump2version --verbose bump2version major
-
-# ---
-
-dryrun_bump_minor_version: ## bump major version
-	@echo
-	@echo "Dry run bump the minor version"
-	@echo
-	bump2version --dry-run --verbose bump2version minor
 
 bump_minor_version: ## bump minor version
 	@echo
 	@echo "About to bump the minor version"
 	@echo
+	#bump2version --dry-run --verbose bump2version mminor
 	bump2version --verbose bump2version mminor
-
-# ---
-
-dryrun_bump_patch_version: ## bump major version
-	@echo
-	@echo "Dry run bump the patch version"
-	@echo
-	bump2version --dry-run --verbose bump2version patch
 
 bump_patch_version: ## bump patch version
 	@echo
 	@echo "About to bump the patch version"
 	@echo
+	#bump2version --dry-run --verbose bump2version patch
 	bump2version --verbose bump2version patch
 
-# ---
-
-dryrun_release: ## dry run: cut a release
+release: ## tag and cut a release
 	@echo
 	@echo "About to cut a release: from current branch $(CB) to main"
-	scripts/release.sh --dry-run $(CB) main
-
-release: ## dry run: cut a release
-	@echo
-	@echo "About to cut a release: from current branch $(CB) to main"
+	#scripts/release.sh --dry-run $(CB) main
 	scripts/release.sh $(CB) main
 
-release_tag: ## dry run: cut a release
+release_tag: ## only tag the release, do not cut it
 	@echo
-	@echo "About to cut a release: from current branch $(CB) to main"
-	scripts/release.sh --tags-only $(CB) main
+	@echo "About to tag a release: on branch $(CB)"
+	#scripts/release.sh --dry-run --tag-only $(CB) main
+	scripts/release.sh --tag-only $(CB) not_main

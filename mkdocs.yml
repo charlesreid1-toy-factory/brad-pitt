@@ -12,6 +12,8 @@ nav:
   - Interview with a Vampire: interview.md
   - Developers:
     - Release Process: release.md
+    - Hotfix Process: hotfix.md
+    - Artifact Release Process: artifact_releases.md
     - API Reference: api.md
 
 theme:

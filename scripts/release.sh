@@ -100,6 +100,30 @@ if ! git --no-pager diff --ignore-submodules=untracked --exit-code; then
     exit 1
 fi
 
+############## Artifacts
+
+# Documentation
+#
+# If TAGONLY is false, we are going to cut a release to main,
+# meaning the default git branch will point at this version,
+# which means it should be considered the "latest".
+# 
+# Add the latest shortcut whenever we're cutting a release to main.
+
+if [[ ${DRYRUN:-} == true ]]; then
+	if [[ ${TAGONLY:-} == false ]]; then
+		echo "mike deploy $(cat VERSION) latest"
+	else
+		echo "mike deploy $(cat VERSION)"
+	fi
+else
+	if [[ ${TAGONLY:-} == false ]]; then
+		mike deploy $(cat VERSION) latest
+	else
+		mike deploy $(cat VERSION)
+	fi
+fi
+
 ############## Strap in
 
 if [[ ${DRYRUN:-} == true ]]; then
