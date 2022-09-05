@@ -53,8 +53,6 @@ if [[ "${TAGONLY}" == "" ]]; then
 	set -x
 fi
 
-exit 1;
-
 ############## Checks
 
 # Check nargs
