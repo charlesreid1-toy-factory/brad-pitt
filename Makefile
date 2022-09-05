@@ -1,4 +1,6 @@
-.PHONY: clean clean-build clean-pyc clean-test lint lint/flake8 lint/black docs serve-docs deploy-docs test test-all install release_major release_major_real release_minor release_minor_real release_patch release_patch_real
+include common.mk
+
+.PHONY: clean clean-build clean-pyc clean-test lint lint/flake8 lint/black docs serve-docs deploy-docs test test-all install bump_major_version bump_minor_version bump_patch_version release
 
 .DEFAULT_GOAL := help
 
@@ -14,7 +16,7 @@ endef
 export PRINT_HELP_PYSCRIPT
 
 help:
-	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
+	@python3 -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
 ############ Clean
 
@@ -45,6 +47,14 @@ lint/black: ## check style with black
 
 lint: lint/flake8 lint/black ## check style
 
+############ Requirements
+
+requirements:
+	python3 -m pip install --upgrade -r requirements.txt
+
+requirements-dev:
+	python3 -m pip install --upgrade -r requirements-dev.txt
+
 ############ Docs
 
 docs: ## generate mkdocs HTML documentation
@@ -60,35 +70,68 @@ deploy-docs: docs ## serve the docs
 ############ Test
 
 test: ## run tests quickly with the default Python
-	pytest
+	pytest -vs
 
 test-all: ## run tests on every Python version with tox
 	tox
 
 ############ Build
 
-install: clean ## install the package to the active Python's site-packages
-	python setup.py install
+build: clean ## build and install the package into the active Python's site-packages
+	python3 setup.py build install
+
+buildtest: clean build test
 
 ############ Release
 
-release_major: ## dry run: cut a major release
+dryrun_bump_major_version: ## bump major version
+	@echo
+	@echo "Dry run bump the major version"
+	@echo
 	bump2version --dry-run --verbose bump2version major
-	@echo "Use the 'make release_major_real' rule to commit the proposed changes."
 
-release_major_real: ## cut a major release
+bump_major_version: ## bump major version
+	@echo
+	@echo "About to bump the major version"
+	@echo
 	bump2version --verbose bump2version major
 
-release_minor: ## dry run: cut a minor release
+# ---
+
+dryrun_bump_minor_version: ## bump major version
+	@echo
+	@echo "Dry run bump the minor version"
+	@echo
 	bump2version --dry-run --verbose bump2version minor
-	@echo "Use the 'make release_minor_real' rule to commit the proposed changes."
 
-release_minor_real: ## cut a minor release
-	bump2version --verbose bump2version minor
+bump_minor_version: ## bump minor version
+	@echo
+	@echo "About to bump the minor version"
+	@echo
+	bump2version --verbose bump2version mminor
 
-release_patch: ## dry run: cut a patch release
+# ---
+
+dryrun_bump_patch_version: ## bump major version
+	@echo
+	@echo "Dry run bump the patch version"
+	@echo
 	bump2version --dry-run --verbose bump2version patch
-	@echo "Use the 'make release_patch_real' rule to commit the proposed changes."
 
-release_patch_real: ## cut a patch release
+bump_patch_version: ## bump patch version
+	@echo
+	@echo "About to bump the patch version"
+	@echo
 	bump2version --verbose bump2version patch
+
+# ---
+
+dryrun_release: ## dry run: cut a release
+	@echo
+	@echo "About to cut a release: from current branch $(CB) to main"
+	scripts/release.sh --dry-run $(CB) main
+
+release: ## dry run: cut a release
+	@echo
+	@echo "About to cut a release: from current branch $(CB) to main"
+	scripts/release.sh $(CB) main
