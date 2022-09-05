@@ -96,22 +96,22 @@ bump_major_version: ## bump major version
 	@echo
 	@echo "About to bump the major version"
 	@echo
-	#bump2version --dry-run --verbose bump2version major
-	bump2version --verbose bump2version major
+	#bump2version --dry-run --verbose major
+	bump2version --verbose major
 
 bump_minor_version: ## bump minor version
 	@echo
 	@echo "About to bump the minor version"
 	@echo
-	#bump2version --dry-run --verbose bump2version minor
-	bump2version --verbose bump2version minor
+	#bump2version --dry-run --verbose minor
+	bump2version --verbose minor
 
 bump_patch_version: ## bump patch version
 	@echo
 	@echo "About to bump the patch version"
 	@echo
-	#bump2version --dry-run --verbose bump2version patch
-	bump2version --verbose bump2version patch
+	#bump2version --dry-run --verbose patch
+	bump2version --verbose patch
 
 release: ## tag and cut a release
 	@echo
