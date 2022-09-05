@@ -188,7 +188,6 @@ else
 	echo "git tag $RELEASE_TAG"
 	echo "git push --tags $REMOTE"
 	echo
-else
 fi
 set +x
 echo "Done. Success. Thank you. Goodbye."
