@@ -485,47 +485,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#start-with-a-dry-run" class="md-nav__link">
-    start with a dry run
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#do-it-really" class="md-nav__link">
-    do it really
-  </a>
-  
-    <nav class="md-nav" aria-label="do it really">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#merge-upstream-to-newer-version" class="md-nav__link">
-    Merge Upstream to Newer Version
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#start-with-a-dry-run_1" class="md-nav__link">
-    start with a dry run
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#do-it-really_1" class="md-nav__link">
-    do it really
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -721,47 +680,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#start-with-a-dry-run" class="md-nav__link">
-    start with a dry run
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#do-it-really" class="md-nav__link">
-    do it really
-  </a>
-  
-    <nav class="md-nav" aria-label="do it really">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#merge-upstream-to-newer-version" class="md-nav__link">
-    Merge Upstream to Newer Version
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#start-with-a-dry-run_1" class="md-nav__link">
-    start with a dry run
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#do-it-really_1" class="md-nav__link">
-    do it really
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -843,11 +761,10 @@ the CHANGELOG and updating dependencies in requirements.txt files.</p>
         develop
 </code></pre></div>
 <p>Create a pull request from this release preparation branch.
-(Alternatively, merge it into <code>develop</code> directly:</p>
+(Alternatively, merge it into <code>develop</code> directly:)</p>
 <div class="highlight"><pre><span></span><code>git checkout develop
 git merge --no-ff prepare-release-vX.Y
 </code></pre></div>
-<p>)</p>
 <p>When the PR is approved and merged into develop, or when it has been manually
 merged into develop, the develop branch will be ready for a new release:</p>
 <div class="highlight"><pre><span></span><code>                prepare-release-vX.Y               
@@ -1033,12 +950,12 @@ o--o--o--o--o
 </code></pre></div>
 <p>We can start at the common ancestor commit, which in this case is git tag v1.4.</p>
 <p>We check out the hotfix branch directly from that git tag:</p>
-<p><code>`
-git fetch --all --tags
-git checkout tags/v1.4 -b hotfix/fix-typos</code></p>
+<div class="highlight"><pre><span></span><code>git fetch --all --tags
+git checkout tags/v1.4 -b hotfix/fix-typos
+</code></pre></div>
 <h5 id="contribute-typo-fixes">Contribute Typo Fixes<a class="headerlink" href="#contribute-typo-fixes" title="Permanent link">&para;</a></h5>
 <p>Contribute typo fixes to the hotfix branch with <code>git commit</code> commands:</p>
-<p><code>main
+<div class="highlight"><pre><span></span><code>                    main
                     tag:v2.0
                     |    
               o--o--o
@@ -1046,22 +963,25 @@ git checkout tags/v1.4 -b hotfix/fix-typos</code></p>
 o--o--o--o--o--------o--o--o
             |
             |
-            tag:v1.4</code></p>
+            tag:v1.4
+</code></pre></div>
 <p>Now we have to merge the hotfix into any older versions that are affected
 (and their version number bumped), and merge the hotfix into the latest
 version if it is affected (and its version number bumped). If the latest
 branch is updated, a new release should also be cut to main.</p>
 <h5 id="merge-fixes-to-older-version">Merge Fixes to Older Version<a class="headerlink" href="#merge-fixes-to-older-version" title="Permanent link">&para;</a></h5>
-<h5 id="merge-fixes-upstream-to-newer-version">Merge Fixes Upstream to Newer Version<a class="headerlink" href="#merge-fixes-upstream-to-newer-version" title="Permanent link">&para;</a></h5>
 <p>Now we have to merge the hotfix changes into the tagged prior versions,
 and bump the version number, and if this is the latest branch, cut a new
 release to main.</p>
-<p>Start with the oldest version:</p>
-<p><code>git fetch --all --tags
-git checkout tags/v1.4 -b release/v1.4
-git merge --no-ff hotfix/fix-typos</code></p>
+<p>Start by fetching all the tags:</p>
+<div class="highlight"><pre><span></span><code>git fetch --all --tags
+</code></pre></div>
+<p>Now check out the tag for the older version, 1.4. Create a new release branch:</p>
+<div class="highlight"><pre><span></span><code>git checkout tags/v1.4 -b release/v1.4
+git merge --no-ff hotfix/fix-typos
+</code></pre></div>
 <p>which will result in this git diagram:</p>
-<p><code>main
+<div class="highlight"><pre><span></span><code>                    main
                     tag:v2.0
                     |    
               o--o--o
@@ -1070,59 +990,98 @@ o--o--o--o--o--------o--o--o
             |\              \
             | \--------------o
             |                 release/v1.4
-            tag:v1.4</code></p>
+            tag:v1.4
+</code></pre></div>
 <p>Now run bump2version to bump the patch version, <code>1.4.0</code> to <code>1.4.1</code>,
 and update the <code>v1.4</code> git tag to point to the new commit:</p>
-<p>```</p>
-<h2 id="start-with-a-dry-run">start with a dry run<a class="headerlink" href="#start-with-a-dry-run" title="Permanent link">&para;</a></h2>
-<p>make dryrun_bump_patch_version</p>
-<h2 id="do-it-really">do it really<a class="headerlink" href="#do-it-really" title="Permanent link">&para;</a></h2>
-<p>make bump_patch_version
-```</p>
+<div class="highlight"><pre><span></span><code># start with a dry run
+make dryrun_bump_patch_version
+
+# do it really
+make bump_patch_version
+</code></pre></div>
 <p>(Note: we do not want to cut a release to main, because a newer version has already
 been cut to main.)</p>
 <p>This results in:</p>
-<p><code>main
+<div class="highlight"><pre><span></span><code>                    main
                     tag:v2.0
                     |    
               o--o--o
              /              hotfix/fix-typos
 o--o--o--o--o--------o--o--o
              \              \
-              \--------------o
-                             | release/v1.4
-                             |
-                             |
-                             tag:v1.4</code></p>
-<h5 id="merge-upstream-to-newer-version">Merge Upstream to Newer Version<a class="headerlink" href="#merge-upstream-to-newer-version" title="Permanent link">&para;</a></h5>
-<p>Similarly, the hotfix can be merged into v2.0:</p>
-<p><code>git fetch --all --tags
-git checkout tags/v2.0 -b release/v2.0
-git merge --no-ff hotfix/fix-typos</code></p>
+              \--------------o---o
+                                 | release/v1.4
+                                 |
+                                 |
+                                 tag:v1.4
+</code></pre></div>
+<h5 id="merge-fixes-upstream-to-newer-version">Merge Fixes Upstream to Newer Version<a class="headerlink" href="#merge-fixes-upstream-to-newer-version" title="Permanent link">&para;</a></h5>
+<p>Similarly, the hotfix can be merged into v2.0.</p>
+<p>Start by fetching all the tags:</p>
+<div class="highlight"><pre><span></span><code>git fetch --all --tags
+</code></pre></div>
+<p>Now check out the tag for the newer version, 2.0. Create a new release branch:</p>
+<div class="highlight"><pre><span></span><code>git checkout tags/v2.0 -b release/v2.0
+git merge --no-ff hotfix/fix-typos
+</code></pre></div>
 <p>This results in:</p>
-<p><code>main
+<div class="highlight"><pre><span></span><code>                    main
                     tag:v2.0
                     |         release/v2.0
               o--o--o--------o
              /              /
 o--o--o--o--o--------o--o--o hotfix/fix-typos
              \              \
-              \--------------o
-                             | release/v1.4
-                             |
-                             |
-                             tag:v1.4</code></p>
+              \--------------o---o
+                                 | release/v1.4
+                                 |
+                                 |
+                                 tag:v1.4
+</code></pre></div>
 <p>Now run bump2version to bump the patch version, <code>2.0.0</code> to <code>2.0.1</code>,
 and update the <code>v2.0</code> git tag to point to the new commit:</p>
-<p>```</p>
-<h2 id="start-with-a-dry-run_1">start with a dry run<a class="headerlink" href="#start-with-a-dry-run_1" title="Permanent link">&para;</a></h2>
-<p>make dryrun_bump_patch_version</p>
-<h2 id="do-it-really_1">do it really<a class="headerlink" href="#do-it-really_1" title="Permanent link">&para;</a></h2>
-<p>make bump_patch_version
-```</p>
+<div class="highlight"><pre><span></span><code># start with a dry run
+make dryrun_bump_patch_version
+
+# do it really
+make bump_patch_version
+</code></pre></div>
+<p>This results in:</p>
+<div class="highlight"><pre><span></span><code>                                 tag:v2.0
+                                 |
+                                 |
+                                 | release/v2.0
+              o--o--o--------o---o
+             /              /
+o--o--o--o--o--------o--o--o hotfix/fix-typos
+             \              \
+              \--------------o---o
+                                 | release/v1.4
+                                 |
+                                 |
+                                 tag:v1.4
+</code></pre></div>
 <p>Finally, because this is the latest version, run make release to cut
 the newest release to the main branch:</p>
-<p><code>make release</code></p>
+<div class="highlight"><pre><span></span><code>make release
+</code></pre></div>
+<p>This results in the v2.0 tag being cut to main:</p>
+<div class="highlight"><pre><span></span><code>                                 main
+                                 tag:v2.0
+                                 |
+                                 |
+                                 | release/v2.0
+              o--o--o--------o---o
+             /              /
+o--o--o--o--o--------o--o--o hotfix/fix-typos
+             \              \
+              \--------------o---o
+                                 | release/v1.4
+                                 |
+                                 |
+                                 tag:v1.4
+</code></pre></div>
 
 
 
