@@ -135,7 +135,7 @@ if [[ "${DRYRUN}" == "" ]]; then
 
 	if [[ "${TAGONLY}" == "" ]]; then
 		# cutting release to main, so include latest shortcut
-		mike deploy ${MIKE_TAG} latest
+		mike deploy -u ${MIKE_TAG} latest
 	else
 		mike deploy ${MIKE_TAG}
 	fi
@@ -148,7 +148,7 @@ else
 
 	if [[ "${TAGONLY}" == "" ]]; then
 		# cutting release to main, so include latest shortcut
-		echo "mike deploy ${MIKE_TAG} latest"
+		echo "mike deploy -u ${MIKE_TAG} latest"
 	else
 		echo "mike deploy ${MIKE_TAG}"
 	fi
