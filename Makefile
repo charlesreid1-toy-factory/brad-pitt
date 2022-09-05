@@ -135,3 +135,8 @@ release: ## dry run: cut a release
 	@echo
 	@echo "About to cut a release: from current branch $(CB) to main"
 	scripts/release.sh $(CB) main
+
+release_tag: ## dry run: cut a release
+	@echo
+	@echo "About to cut a release: from current branch $(CB) to main"
+	scripts/release.sh --tags-only $(CB) main
