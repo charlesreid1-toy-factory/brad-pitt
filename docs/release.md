@@ -19,6 +19,32 @@ These can complicate the branches, so we treat them separately. See
 For documentation and artifact releases, see [Artifact Release Process](artifact_releases.md).
 
 
+# Cheat Sheet
+
+Use this for reference once you've gone through the steps below.
+
+```
+# make sure you can use the Makefile
+source environment
+
+# start from the final commit on develop
+git checkout develop
+git reset --hard HEAD
+git pull gh develop
+
+# create release branch
+git checkout -b release-prep-vX.Y
+
+# bump the version
+make bump_major_version
+# or 
+make bump_minor_version
+
+# generate and deploy assets, update tags, cut release to main
+make release
+```
+
+
 # Best Case Scenario
 
 Let's run through what the steps to cut a new release look like
