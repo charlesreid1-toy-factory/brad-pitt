@@ -1,4 +1,4 @@
-# Release Process
+# Normal Release Process
 
 ```
 x.y.z
