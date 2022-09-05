@@ -40,6 +40,18 @@ fi
 
 POSITIONAL=
 
+if [[ ${DRYRUN:-} == false ]]; then
+	set +x
+	echo "No --dry-run flag detected, performing real git actions"
+	set -x
+fi
+
+if [[ ${TAGONLY:-} == false ]]; then
+	set +x
+	echo "No --tag-only flag detected, cutting release to main"
+	set -x
+fi
+
 ############## Checks
 
 # Check nargs
