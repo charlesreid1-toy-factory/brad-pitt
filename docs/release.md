@@ -101,14 +101,12 @@ the CHANGELOG and updating dependencies in requirements.txt files.
 ```
 
 Create a pull request from this release preparation branch.
-(Alternatively, merge it into `develop` directly:
+(Alternatively, merge it into `develop` directly:)
 
 ```
 git checkout develop
 git merge --no-ff prepare-release-vX.Y
 ```
-
-)
 
 When the PR is approved and merged into develop, or when it has been manually
 merged into develop, the develop branch will be ready for a new release:
@@ -381,7 +379,7 @@ We can start at the common ancestor commit, which in this case is git tag v1.4.
 
 We check out the hotfix branch directly from that git tag:
 
-````
+```
 git fetch --all --tags
 git checkout tags/v1.4 -b hotfix/fix-typos
 ```
@@ -407,23 +405,27 @@ Now we have to merge the hotfix into any older versions that are affected
 version if it is affected (and its version number bumped). If the latest
 branch is updated, a new release should also be cut to main.
 
+
 #### Merge Fixes to Older Version
-#### Merge Fixes Upstream to Newer Version
 
 Now we have to merge the hotfix changes into the tagged prior versions,
 and bump the version number, and if this is the latest branch, cut a new
 release to main.
 
-Start with the oldest version:
+Start by fetching all the tags:
 
 ```
 git fetch --all --tags
+```
+
+Now check out the tag for the older version, 1.4. Create a new release branch:
+
+```
 git checkout tags/v1.4 -b release/v1.4
 git merge --no-ff hotfix/fix-typos
 ```
 
 which will result in this git diagram:
-
 
 ```
                     main
@@ -462,19 +464,27 @@ This results in:
              /              hotfix/fix-typos
 o--o--o--o--o--------o--o--o
              \              \
-              \--------------o
-                             | release/v1.4
-                             |
-                             |
-                             tag:v1.4
+              \--------------o---o
+                                 | release/v1.4
+                                 |
+                                 |
+                                 tag:v1.4
 ```
 
-#### Merge Upstream to Newer Version
 
-Similarly, the hotfix can be merged into v2.0:
+#### Merge Fixes Upstream to Newer Version
+
+Similarly, the hotfix can be merged into v2.0.
+
+Start by fetching all the tags:
 
 ```
 git fetch --all --tags
+```
+
+Now check out the tag for the newer version, 2.0. Create a new release branch:
+
+```
 git checkout tags/v2.0 -b release/v2.0
 git merge --no-ff hotfix/fix-typos
 ```
@@ -489,11 +499,11 @@ This results in:
              /              /
 o--o--o--o--o--------o--o--o hotfix/fix-typos
              \              \
-              \--------------o
-                             | release/v1.4
-                             |
-                             |
-                             tag:v1.4
+              \--------------o---o
+                                 | release/v1.4
+                                 |
+                                 |
+                                 tag:v1.4
 ```
 
 Now run bump2version to bump the patch version, `2.0.0` to `2.0.1`,
@@ -507,6 +517,24 @@ make dryrun_bump_patch_version
 make bump_patch_version
 ```
 
+This results in:
+
+```
+                                 tag:v2.0
+                                 |
+                                 |
+                                 | release/v2.0
+              o--o--o--------o---o
+             /              /
+o--o--o--o--o--------o--o--o hotfix/fix-typos
+             \              \
+              \--------------o---o
+                                 | release/v1.4
+                                 |
+                                 |
+                                 tag:v1.4
+```
+
 Finally, because this is the latest version, run make release to cut
 the newest release to the main branch:
 
@@ -514,3 +542,21 @@ the newest release to the main branch:
 make release
 ```
 
+This results in the v2.0 tag being cut to main:
+
+```
+                                 main
+                                 tag:v2.0
+                                 |
+                                 |
+                                 | release/v2.0
+              o--o--o--------o---o
+             /              /
+o--o--o--o--o--------o--o--o hotfix/fix-typos
+             \              \
+              \--------------o---o
+                                 | release/v1.4
+                                 |
+                                 |
+                                 tag:v1.4
+```
