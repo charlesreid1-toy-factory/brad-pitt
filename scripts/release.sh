@@ -111,6 +111,7 @@ fi
 # Add the latest shortcut whenever we're cutting a release to main.
 
 if [[ ${DRYRUN:-} == true ]]; then
+	mkdocs build --strict --clean
 	if [[ ${TAGONLY:-} == false ]]; then
 		echo "mike deploy $(cat VERSION) latest"
 	else
@@ -118,6 +119,7 @@ if [[ ${DRYRUN:-} == true ]]; then
 	fi
 	echo "git push ${REMOTE} gh-pages"
 else
+	mkdocs build --strict --clean
 	if [[ ${TAGONLY:-} == false ]]; then
 		mike deploy $(cat VERSION) latest
 	else
