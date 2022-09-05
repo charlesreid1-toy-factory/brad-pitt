@@ -11,7 +11,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://charlesreid1-toy-factory.github.io/brad-pitt/0.2/artifact_releases/</loc>
+         <lastmod>2022-09-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://charlesreid1-toy-factory.github.io/brad-pitt/0.2/fightclub/</loc>
+         <lastmod>2022-09-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://charlesreid1-toy-factory.github.io/brad-pitt/0.2/hotfix/</loc>
          <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>

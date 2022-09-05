@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://charlesreid1-toy-factory.github.io/brad-pitt/0.2/release/">
+        <link rel="canonical" href="https://charlesreid1-toy-factory.github.io/brad-pitt/0.2/hotfix/">
       
       <link rel="icon" href="../material/alpha-b-circle">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.2">
     
     
       
-        <title>Release Process - Brad Pitt</title>
+        <title>Hotfix Process - Brad Pitt</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#best-case-scenario" class="md-skip">
+        <a href="#fixing-problems" class="md-skip">
           Skip to content
         </a>
       
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Release Process
+              Hotfix Process
             
           </span>
         </div>
@@ -316,6 +316,20 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../release/" class="md-nav__link">
+        Release Process
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -326,12 +340,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Release Process
+          Hotfix Process
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Release Process
+        Hotfix Process
       </a>
       
         
@@ -348,38 +362,67 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#best-case-scenario" class="md-nav__link">
-    Best Case Scenario
+  <a href="#fixing-problems" class="md-nav__link">
+    Fixing Problems
   </a>
   
-    <nav class="md-nav" aria-label="Best Case Scenario">
+    <nav class="md-nav" aria-label="Fixing Problems">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#develop-new-features" class="md-nav__link">
-    Develop New Features
+  <a href="#why-hotfixes-are-necessary" class="md-nav__link">
+    Why Hotfixes are Necessary
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#open-review-and-merge-pull-request" class="md-nav__link">
-    Open, Review, and Merge Pull Request
+  <a href="#hotfix-scenario" class="md-nav__link">
+    Hotfix Scenario
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#preparing-for-a-majorminor-release" class="md-nav__link">
-    Preparing for a Major/Minor Release
+  <a href="#prepare-to-apply-hotfix" class="md-nav__link">
+    Prepare to Apply Hotfix
   </a>
   
-    <nav class="md-nav" aria-label="Preparing for a Major/Minor Release">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-off-hotfix" class="md-nav__link">
+    One-Off Hotfix
+  </a>
+  
+    <nav class="md-nav" aria-label="One-Off Hotfix">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#run-release-script" class="md-nav__link">
-    Run Release Script
+  <a href="#upstream-hotfix" class="md-nav__link">
+    Upstream HotFix
+  </a>
+  
+    <nav class="md-nav" aria-label="Upstream HotFix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contribute-typo-fixes" class="md-nav__link">
+    Contribute Typo Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merge-fixes-to-older-version" class="md-nav__link">
+    Merge Fixes to Older Version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merge-fixes-upstream-to-newer-version" class="md-nav__link">
+    Merge Fixes Upstream to Newer Version
   </a>
   
 </li>
@@ -389,17 +432,8 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#artifact-releases" class="md-nav__link">
-    Artifact Releases
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#what-about-the-next-majorminor-version" class="md-nav__link">
-    What About the Next Major/Minor Version?
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
@@ -412,20 +446,6 @@
   
 </nav>
       
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../hotfix/" class="md-nav__link">
-        Hotfix Process
-      </a>
     </li>
   
 
@@ -490,38 +510,67 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#best-case-scenario" class="md-nav__link">
-    Best Case Scenario
+  <a href="#fixing-problems" class="md-nav__link">
+    Fixing Problems
   </a>
   
-    <nav class="md-nav" aria-label="Best Case Scenario">
+    <nav class="md-nav" aria-label="Fixing Problems">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#develop-new-features" class="md-nav__link">
-    Develop New Features
+  <a href="#why-hotfixes-are-necessary" class="md-nav__link">
+    Why Hotfixes are Necessary
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#open-review-and-merge-pull-request" class="md-nav__link">
-    Open, Review, and Merge Pull Request
+  <a href="#hotfix-scenario" class="md-nav__link">
+    Hotfix Scenario
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#preparing-for-a-majorminor-release" class="md-nav__link">
-    Preparing for a Major/Minor Release
+  <a href="#prepare-to-apply-hotfix" class="md-nav__link">
+    Prepare to Apply Hotfix
   </a>
   
-    <nav class="md-nav" aria-label="Preparing for a Major/Minor Release">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-off-hotfix" class="md-nav__link">
+    One-Off Hotfix
+  </a>
+  
+    <nav class="md-nav" aria-label="One-Off Hotfix">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#run-release-script" class="md-nav__link">
-    Run Release Script
+  <a href="#upstream-hotfix" class="md-nav__link">
+    Upstream HotFix
+  </a>
+  
+    <nav class="md-nav" aria-label="Upstream HotFix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contribute-typo-fixes" class="md-nav__link">
+    Contribute Typo Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merge-fixes-to-older-version" class="md-nav__link">
+    Merge Fixes to Older Version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merge-fixes-upstream-to-newer-version" class="md-nav__link">
+    Merge Fixes Upstream to Newer Version
   </a>
   
 </li>
@@ -531,17 +580,8 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#artifact-releases" class="md-nav__link">
-    Artifact Releases
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#what-about-the-next-majorminor-version" class="md-nav__link">
-    What About the Next Major/Minor Version?
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
@@ -564,131 +604,269 @@
                 
 
 
-  <h1>Release Process</h1>
+  <h1>Hotfix Process</h1>
 
 <div class="highlight"><pre><span></span><code>x.y.z
 </code></pre></div>
 <p>x = major version number</p>
 <p>y = minor version number</p>
 <p>z = patch version number</p>
-<p>Normal releases are done by bumping the major version (if new changes will make
-existing code backwards-incompatible), or the minor version (if new changes will
-not break existing code).</p>
-<p>Hotfixes and emergency patches are released by bumping the patch version number.
-These can complicate the branches, so we treat them separately. See
-<a href="hotfixes.md">Hotfixes</a>.</p>
-<p>For documentation and artifact releases, see <a href="../artifact_releases/">Artifact Release Process</a>.</p>
-<h2 id="best-case-scenario">Best Case Scenario<a class="headerlink" href="#best-case-scenario" title="Permanent link">&para;</a></h2>
-<p>Let's run through what the steps to cut a new release look like
-in the best case scenario.</p>
-<h3 id="develop-new-features">Develop New Features<a class="headerlink" href="#develop-new-features" title="Permanent link">&para;</a></h3>
-<p>All development of new versions happens starting from the <code>develop</code> branch.</p>
-<p>Users start from the <code>develop</code> branch:</p>
-<div class="highlight"><pre><span></span><code>git checkout develop
+<p>As mentioned on the <a href="../release/">Release Process</a> page,
+hotfixes and emergency patches are released by bumping the patch version number.</p>
+<h2 id="fixing-problems">Fixing Problems<a class="headerlink" href="#fixing-problems" title="Permanent link">&para;</a></h2>
+<h3 id="why-hotfixes-are-necessary">Why Hotfixes are Necessary<a class="headerlink" href="#why-hotfixes-are-necessary" title="Permanent link">&para;</a></h3>
+<p>A hotfix refers to a short-term quick fix for a problem with something
+running in production.</p>
+<p>To understand why hotfixes are necessary, consider the following scenario:
+suppose you cut a release <code>1.4.y</code>, and a group of users adopts that version
+and starts using it in production.</p>
+<p>Separately, suppose you develop several major features and you cut a new major
+release, <code>2.x</code>. Going forward, you would prefer if everyone adopted the <code>2.x</code>
+branch, and all future development will focus on <code>2.x</code> (there will not be a <code>1.5</code>),
+but you still have users using <code>1.4.y</code> in production.</p>
+<h3 id="hotfix-scenario">Hotfix Scenario<a class="headerlink" href="#hotfix-scenario" title="Permanent link">&para;</a></h3>
+<p>Suppose we have a tag for v1.4.0, which was cut some time in the past,
+and since then we have created a new major version <code>2.0.0</code> and its corresponding tag.</p>
+<div class="highlight"><pre><span></span><code>                    main
+                    tag:v2.0.0
+                    |    
+              o--o--o--o--o--o
+             /                develop
+o--o--o--o--o
+            |
+            |
+            tag:v1.4
 </code></pre></div>
-<p>(Assuming a clean working directory, and after pulling latest changes.)</p>
-<p>To add a new feature or fix a bug, create a new branch with the feature or fix
-(we recommend naming it <code>&lt;name of author&gt;-&lt;name of feature&gt;</code>):</p>
-<div class="highlight"><pre><span></span><code>git checkout -b chaz-new-branch
-</code></pre></div>
-<p>The diagram of the git repository looks like this:</p>
-<div class="highlight"><pre><span></span><code>      chaz-new-branch
-o--o--o
-      develop
-</code></pre></div>
-<p>Make commits on the new branch to develop the feature. When finished, the
-diagram of the git repository looks like this:</p>
-<div class="highlight"><pre><span></span><code>                        chaz-new-branch
-        o--o--o--o--o--o
-       /
-      /
---o--o
-      develop
-</code></pre></div>
-<h3 id="open-review-and-merge-pull-request">Open, Review, and Merge Pull Request<a class="headerlink" href="#open-review-and-merge-pull-request" title="Permanent link">&para;</a></h3>
-<p>Now open a PR to merge <code>chaz-new-branch</code> into <code>develop</code>.</p>
-<p>This PR will be reviewed, possibly with changes requested, and finally it will
-be merged into <code>develop</code>.</p>
-<p>When the PR is merged, the digram of the git repository will look like this:</p>
-<div class="highlight"><pre><span></span><code>                        chaz-new-branch
-        o--o--o--o--o--o
-       /                \
-      /                  \
---o--o--------------------o
-                          develop
-</code></pre></div>
-<p>Repeat this process until you have added all features and fixes
-for the next release into develop.</p>
-<h3 id="preparing-for-a-majorminor-release">Preparing for a Major/Minor Release<a class="headerlink" href="#preparing-for-a-majorminor-release" title="Permanent link">&para;</a></h3>
-<p>When develop has accumulated enough features and fixes for a new release,
-the code is frozen. A final pull request is opened against <code>develop</code>.
-This final pull request will prepare for the new release by updating
-the following:</p>
+<p>Now suppose we need to fix something in <code>1.4.0</code> (which <code>tag:v1.4</code> points to). There are two scenarios:</p>
 <ul>
-<li>Updating CHANGELOG</li>
-<li>Updating dependencies in requirements.txt</li>
-<li>Updating version number with bumpversion</li>
+<li>The fix for 1.4.0 fixes something that no longer applies in 2.0.0 (one-off hotfix)</li>
+<li>The fix for 1.4.0 fixes something that is still in 2.0.0 (upstream hotfix)</li>
 </ul>
-<p>For example, if the branch preparing for release <code>X.Y</code> were called
-<code>release-prep-vX.Y</code> then the git diagram would look like this:</p>
-<div class="highlight"><pre><span></span><code>                release-prep-vX.Y
-          o--o--o
-         /
---o--o--o
-        develop
+<h3 id="prepare-to-apply-hotfix">Prepare to Apply Hotfix<a class="headerlink" href="#prepare-to-apply-hotfix" title="Permanent link">&para;</a></h3>
+<p>Whichever approach you are going to use, you will need to create a starting branch.</p>
+<p>Create a new branch starting at the commit that the v1.4 tag points to.</p>
+<p>Here's how to do that:</p>
+<p>Start by making sure you have the latest tags:</p>
+<div class="highlight"><pre><span></span><code>git fetch --all --tags
 </code></pre></div>
-<p>We are now ready to bump the version number with <code>bump2version</code>. There are
-several make rules provided to do that:</p>
-<div class="highlight"><pre><span></span><code># if bumping major version
-make bump_major_version
+<p>Assuming your working directory is clean, you should be able to check out the
+tag you want to apply the hotfix to:</p>
+<div class="highlight"><pre><span></span><code>git checkout tags/v1.4 -b release/v1.4
+</code></pre></div>
+<p>Now the git diagram looks like this:</p>
+<div class="highlight"><pre><span></span><code>             release/v1.4
+o--o--o--o--o
+            | 
+            |
+            tag:v1.4
+</code></pre></div>
+<h3 id="one-off-hotfix">One-Off Hotfix<a class="headerlink" href="#one-off-hotfix" title="Permanent link">&para;</a></h3>
+<p>The following procedure is for a fix to version 1.4.y that does not affect version 2.x.</p>
+<p>Starting from branch <code>release/v1.4</code>, create a new hotfix branch. Here, we call it
+<code>hotfix/v1.4/fix-typos</code> but that naming convention is arbitrary:</p>
+<div class="highlight"><pre><span></span><code>git checkout -b hotfix/v1.4/fix-typos
+</code></pre></div>
+<p>Now the git diagram looks like this:</p>
+<div class="highlight"><pre><span></span><code>             hotfix/v1.4/fix-typos
+             release/v1.4
+o--o--o--o--o
+            | 
+            |
+            tag:v1.4
+</code></pre></div>
+<p>Contribute typo fixes to version <code>1.4.0</code> with <code>git commit</code> commands:</p>
+<div class="highlight"><pre><span></span><code>                     hotfix/v1.4/fix-typos
+               o--o--o
+              /
+             /
+o--o--o--o--o release/v1.4
+            | 
+            |
+            tag:v1.4
+</code></pre></div>
+<p>This branch should also bump the patch version number
+using the make rule:</p>
+<div class="highlight"><pre><span></span><code>make bump_patch_version
+</code></pre></div>
+<p>For example, if the original tag v1.4 pointed to the 1.4.0 commit,
+then the hotfix should bump the patch version to 1.4.1.</p>
+<p>(Update the CHANGELOG too.)</p>
+<p>Once all commits have been added to the hotfix and it is ready to merge back into
+the release branch, open a pull request to merge <code>hotfix/v1.4/fix-typos</code> into 
+<code>release/v1.4</code>.</p>
+<p>Once the PR is opened, reviewed, approved, and merged, the git diagram will look like this:</p>
+<div class="highlight"><pre><span></span><code>                      hotfix/v1.4/fix-typos
+               o--o--o
+              /       \
+             /         \
+o--o--o--o--o ----------o
+            |            release/v1.4
+            |
+            tag:v1.4
+</code></pre></div>
+<p>Now, from the <code>release/v1.4</code> branch, run the release script,
+but because this is fixing a version that is no longer the
+latest version, we should only create a git tag for the
+new release, we should not cut that release to main.</p>
+<div class="highlight"><pre><span></span><code>make release_tag
+</code></pre></div>
+<p>You are ready to run bump2version to bump the patch version, <code>1.4.0</code> to <code>1.4.1</code>,
+and update the <code>v1.4</code> git tag to point to the new commit:</p>
+<div class="highlight"><pre><span></span><code># start with a dry run
+make dryrun_bump_patch_version
 
-# if bumping minor version
-make bump_minor_version
+# do it really
+make bump_patch_version
 </code></pre></div>
-<p>Create a PR from this release preparation branch, have the PR reviewed, and
-merge it into <code>develop</code>:</p>
-<div class="highlight"><pre><span></span><code>                release-prep-vX.Y
-          o--o--o
-         /       \
---o--o--o---------o
-                  develop
+<p>(Note: we do not want to cut a release to main, because a newer version has already
+been cut to main.)</p>
+<h4 id="upstream-hotfix">Upstream HotFix<a class="headerlink" href="#upstream-hotfix" title="Permanent link">&para;</a></h4>
+<p>Now let's walk through a hotfix that affects both 1.4.0 and 2.0.0.</p>
+<p>Revisiting the git diagram:</p>
+<div class="highlight"><pre><span></span><code>                    main
+                    tag:v2.0
+                    |    
+              o--o--o
+             /
+o--o--o--o--o
+            |
+            |
+            tag:v1.4
 </code></pre></div>
-<p>We are almost done, but still need to officially release the new version.</p>
-<h4 id="run-release-script">Run Release Script<a class="headerlink" href="#run-release-script" title="Permanent link">&para;</a></h4>
-<p>Once the final version is merged to <code>develop</code>, the last step is to run
-the <code>scripts/release.sh</code> script from the <code>develop</code> branch.</p>
-<p>The release script does two things:</p>
-<ul>
-<li>
-<p>Creates a git tag for the new commit to allow referencing it by version number</p>
-</li>
-<li>
-<p>Cuts a new release to main (in other words, force the main (default) branch to
-  point to this commit, so that when people clone the repo, they get this latest
-  version)</p>
-</li>
-</ul>
-<p>The release script takes two arguments:</p>
-<ul>
-<li>The source (promote from) branch, usually <code>develop</code></li>
-<li>The destination (promote to) branch, usually <code>main</code></li>
-</ul>
-<p>If those are your two arguments, punch it:</p>
+<p>We can start at the common ancestor commit, which in this case is git tag v1.4.</p>
+<p>We check out the hotfix branch directly from that git tag:</p>
+<div class="highlight"><pre><span></span><code>git fetch --all --tags
+git checkout tags/v1.4 -b hotfix/fix-typos
+</code></pre></div>
+<h5 id="contribute-typo-fixes">Contribute Typo Fixes<a class="headerlink" href="#contribute-typo-fixes" title="Permanent link">&para;</a></h5>
+<p>Contribute typo fixes to the hotfix branch with <code>git commit</code> commands:</p>
+<div class="highlight"><pre><span></span><code>                    main
+                    tag:v2.0
+                    |    
+              o--o--o
+             /              hotfix/fix-typos
+o--o--o--o--o--------o--o--o
+            |
+            |
+            tag:v1.4
+</code></pre></div>
+<p>Now we have to merge the hotfix into any older versions that are affected
+(and their version number bumped), and merge the hotfix into the latest
+version if it is affected (and its version number bumped). If the latest
+branch is updated, a new release should also be cut to main.</p>
+<h5 id="merge-fixes-to-older-version">Merge Fixes to Older Version<a class="headerlink" href="#merge-fixes-to-older-version" title="Permanent link">&para;</a></h5>
+<p>Now we have to merge the hotfix changes into the tagged prior versions,
+and bump the version number, and if this is the latest branch, cut a new
+release to main.</p>
+<p>Start by fetching all the tags:</p>
+<div class="highlight"><pre><span></span><code>git fetch --all --tags
+</code></pre></div>
+<p>Now check out the tag for the older version, 1.4. Create a new release branch:</p>
+<div class="highlight"><pre><span></span><code>git checkout tags/v1.4 -b release/v1.4
+git merge --no-ff hotfix/fix-typos
+</code></pre></div>
+<p>which will result in this git diagram:</p>
+<div class="highlight"><pre><span></span><code>                    main
+                    tag:v2.0
+                    |    
+              o--o--o
+             /              hotfix/fix-typos
+o--o--o--o--o--------o--o--o
+            |\              \
+            | \--------------o
+            |                 release/v1.4
+            tag:v1.4
+</code></pre></div>
+<p>Now run bump2version to bump the patch version, <code>1.4.0</code> to <code>1.4.1</code>,
+and update the <code>v1.4</code> git tag to point to the new commit:</p>
+<div class="highlight"><pre><span></span><code># start with a dry run
+make dryrun_bump_patch_version
+
+# do it really
+make bump_patch_version
+</code></pre></div>
+<p>(Note: we do not want to cut a release to main, because a newer version has already
+been cut to main.)</p>
+<p>This results in:</p>
+<div class="highlight"><pre><span></span><code>                    main
+                    tag:v2.0
+                    |    
+              o--o--o
+             /              hotfix/fix-typos
+o--o--o--o--o--------o--o--o
+             \              \
+              \--------------o---o
+                                 | release/v1.4
+                                 |
+                                 |
+                                 tag:v1.4
+</code></pre></div>
+<h5 id="merge-fixes-upstream-to-newer-version">Merge Fixes Upstream to Newer Version<a class="headerlink" href="#merge-fixes-upstream-to-newer-version" title="Permanent link">&para;</a></h5>
+<p>Similarly, the hotfix can be merged into v2.0.</p>
+<p>Start by fetching all the tags:</p>
+<div class="highlight"><pre><span></span><code>git fetch --all --tags
+</code></pre></div>
+<p>Now check out the tag for the newer version, 2.0. Create a new release branch:</p>
+<div class="highlight"><pre><span></span><code>git checkout tags/v2.0 -b release/v2.0
+git merge --no-ff hotfix/fix-typos
+</code></pre></div>
+<p>This results in:</p>
+<div class="highlight"><pre><span></span><code>                    main
+                    tag:v2.0
+                    |         release/v2.0
+              o--o--o--------o
+             /              /
+o--o--o--o--o--------o--o--o hotfix/fix-typos
+             \              \
+              \--------------o---o
+                                 | release/v1.4
+                                 |
+                                 |
+                                 tag:v1.4
+</code></pre></div>
+<p>Now run bump2version to bump the patch version, <code>2.0.0</code> to <code>2.0.1</code>,
+and update the <code>v2.0</code> git tag to point to the new commit:</p>
+<div class="highlight"><pre><span></span><code># start with a dry run
+make dryrun_bump_patch_version
+
+# do it really
+make bump_patch_version
+</code></pre></div>
+<p>This results in:</p>
+<div class="highlight"><pre><span></span><code>                                 tag:v2.0
+                                 |
+                                 |
+                                 | release/v2.0
+              o--o--o--------o---o
+             /              /
+o--o--o--o--o--------o--o--o hotfix/fix-typos
+             \              \
+              \--------------o---o
+                                 | release/v1.4
+                                 |
+                                 |
+                                 tag:v1.4
+</code></pre></div>
+<p>Finally, because this is the latest version, run make release to cut
+the newest release to the main branch:</p>
 <div class="highlight"><pre><span></span><code>make release
 </code></pre></div>
-<h3 id="artifact-releases">Artifact Releases<a class="headerlink" href="#artifact-releases" title="Permanent link">&para;</a></h3>
-<p>There is another important consideration as part of the release process,
-which is, how and when to generate and upload artifacts, such as
-eggs, tar files, packages, or documentation.</p>
-<p>To address these questions, visit the <a href="../artifact_releases/">Artifact Release Process</a>
-page.</p>
-<h3 id="what-about-the-next-majorminor-version">What About the Next Major/Minor Version?<a class="headerlink" href="#what-about-the-next-majorminor-version" title="Permanent link">&para;</a></h3>
-<p>Once the glow of victory from cutting the latest version to main has
-faded, you will be thinking about how to proceed on development of the
-next major or minor version. </p>
-<p>To start developing the next version, follow the instructions at the
-beginning of this document - switch to the develop branch and start
-adding features and fixes.</p>
+<p>This results in the v2.0 tag being cut to main:</p>
+<div class="highlight"><pre><span></span><code>                                 main
+                                 tag:v2.0
+                                 |
+                                 |
+                                 | release/v2.0
+              o--o--o--------o---o
+             /              /
+o--o--o--o--o--------o--o--o hotfix/fix-typos
+             \              \
+              \--------------o---o
+                                 | release/v1.4
+                                 |
+                                 |
+                                 tag:v1.4
+</code></pre></div>
 
 
 
@@ -707,7 +885,7 @@ adding features and fixes.</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../interview/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Interview with a Vampire" rel="prev">
+        <a href="../release/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Release Process" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -716,20 +894,20 @@ adding features and fixes.</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Interview with a Vampire
+              Release Process
             </div>
           </div>
         </a>
       
       
         
-        <a href="../hotfix/" class="md-footer__link md-footer__link--next" aria-label="Next: Hotfix Process" rel="next">
+        <a href="../artifact_releases/" class="md-footer__link md-footer__link--next" aria-label="Next: Artifact Release Process" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Hotfix Process
+              Artifact Release Process
             </div>
           </div>
           <div class="md-footer__button md-icon">
