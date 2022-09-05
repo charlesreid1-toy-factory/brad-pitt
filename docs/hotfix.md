@@ -87,6 +87,8 @@ o--o--o--o--o
 
 The following procedure is for a fix to version 1.4.y that does not affect version 2.x.
 
+### Step 1: Create Hotfix Branch
+
 Starting from branch `release/v1.4`, create a new hotfix branch. Here, we call it
 `hotfix/v1.4/fix-typos` but that naming convention is arbitrary:
 
@@ -104,6 +106,8 @@ o--o--o--o--o
             |
             tag:v1.4
 ```
+
+### Step 2: Make Commits to Hotfix Branch
 
 Contribute typo fixes to version `1.4.0` with `git commit` commands:
 
@@ -129,6 +133,8 @@ For example, if the original tag v1.4 pointed to the 1.4.0 commit,
 then the hotfix should bump the patch version to 1.4.1.
 
 (Update the CHANGELOG too.)
+
+### Step 3: Merge Hotfix to Release Branch
 
 Once all commits have been added to the hotfix and it is ready to merge back into
 the release branch, open a pull request to merge `hotfix/v1.4/fix-typos` into 
@@ -156,16 +162,12 @@ new release, we should not cut that release to main.
 make release_tag
 ```
 
-
+### Step 4: Bump Version
 
 You are ready to run bump2version to bump the patch version, `1.4.0` to `1.4.1`,
 and update the `v1.4` git tag to point to the new commit:
 
 ```
-# start with a dry run
-make dryrun_bump_patch_version
-
-# do it really
 make bump_patch_version
 ```
 
@@ -173,9 +175,9 @@ make bump_patch_version
 been cut to main.)
 
 
-### Upstream HotFix
+## Upstream HotFix
 
-Now let's walk through a hotfix that affects both 1.4.0 and 2.0.0.
+Now let's walk through how to deploy a hotfix that affects both 1.4.0 and 2.0.0.
 
 Revisiting the git diagram:
 
@@ -193,16 +195,18 @@ o--o--o--o--o
 
 We can start at the common ancestor commit, which in this case is git tag v1.4.
 
-We check out the hotfix branch directly from that git tag:
+### Step 1: Create Hotfix Branch from Common Ancestor
+
+We check out the hotfix branch directly from that common ancestor's git tag:
 
 ```
 git fetch --all --tags
 git checkout tags/v1.4 -b hotfix/fix-typos
 ```
 
-#### Contribute Typo Fixes
+### Step 2: Make Commits to Hotfix Branch
 
-Contribute typo fixes to the hotfix branch with `git commit` commands:
+Contribute fixes to the hotfix branch with `git commit` commands:
 
 ```
                     main
@@ -222,7 +226,7 @@ version if it is affected (and its version number bumped). If the latest
 branch is updated, a new release should also be cut to main.
 
 
-#### Merge Fixes to Older Version
+### Step 3: Merge Fixes to Older Version
 
 Now we have to merge the hotfix changes into the tagged prior versions,
 and bump the version number, and if this is the latest branch, cut a new
@@ -256,14 +260,12 @@ o--o--o--o--o--------o--o--o
             tag:v1.4
 ```
 
+### Step 4: Bump Version on Older Version
+
 Now run bump2version to bump the patch version, `1.4.0` to `1.4.1`,
 and update the `v1.4` git tag to point to the new commit:
 
 ```
-# start with a dry run
-make dryrun_bump_patch_version
-
-# do it really
 make bump_patch_version
 ```
 
@@ -288,7 +290,7 @@ o--o--o--o--o--------o--o--o
 ```
 
 
-#### Merge Fixes Upstream to Newer Version
+### Step 5: Merge Fixes Upstream to Newer Version
 
 Similarly, the hotfix can be merged into v2.0.
 
@@ -322,14 +324,12 @@ o--o--o--o--o--------o--o--o hotfix/fix-typos
                                  tag:v1.4
 ```
 
+### Step 6: Bump Version on Upstream
+
 Now run bump2version to bump the patch version, `2.0.0` to `2.0.1`,
 and update the `v2.0` git tag to point to the new commit:
 
 ```
-# start with a dry run
-make dryrun_bump_patch_version
-
-# do it really
 make bump_patch_version
 ```
 
