@@ -40,7 +40,18 @@ make bump_major_version
 # or 
 make bump_minor_version
 
-# generate and deploy assets, update tags, cut release to main
+# push the release prep to remote and open PR
+git push gh release-prep-vX.Y
+
+##################
+# open a pull request with branch
+# release-prep-vX.Y
+# and get it merged into develop
+##################
+
+# run this from the develop branch:
+# generate and deploy assets/documentation,
+# update tags, and cut release to main.
 make release
 ```
 
