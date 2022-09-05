@@ -1,9 +1,20 @@
 # Release Process
 
-Proper releases are done by bumping the major (breaking) or minor (non-breaking)
-version numbers. Hotfixes and emergency patches are released using the patch
-version number.
+```
+x.y.z
+```
 
+x = major version number
+
+y = minor version number
+
+z = patch version number
+
+Proper releases are done by bumping the major version (if new changes will make
+existing code backwards-incompatible), or the minor version (if new changes will
+not break existing code).
+
+Hotfixes and emergency patches are released by bumping the patch version number.
 
 ## Developing New Features
 
@@ -89,9 +100,18 @@ the CHANGELOG and updating dependencies in requirements.txt files.
         develop
 ```
 
-Create a pull rrequest from this release preparation branch.
-When approved and merged into develop, the develop branch will be
-ready for a new release to be cut:
+Create a pull request from this release preparation branch.
+(Alternatively, merge it into `develop` directly:
+
+```
+git checkout develop
+git merge --no-ff prepare-release-vX.Y
+```
+
+)
+
+When the PR is approved and merged into develop, or when it has been manually
+merged into develop, the develop branch will be ready for a new release:
 
 ```
                 prepare-release-vX.Y               
@@ -101,7 +121,7 @@ ready for a new release to be cut:
                   develop
 ```
 
-The repo is now ready to cut a new release `X.Y` to the main branch.
+We can now cut a new release `X.Y` from the tip of the develop branch.
 
 
 ## Bumping the Version Number
@@ -248,41 +268,249 @@ Now suppose we need to fix something in `1.4.0` (which `tag:v1.4` points to). Th
 * The fix for 1.4.0 fixes something that no longer applies in 2.0.0 (one-off hot fix)
 * The fix for 1.4.0 fixes something that is still in 2.0.0 (upstream hot fix)
 
-### Deploy a One-Off Hot Fix
-
-Let's walk through the above example, where `tag:v1.4` points to `1.4.0`, and we need to deploy a fix for
-that version that only affects that version (and does not affect later versions, 2.x+).
-
-Check out the commit tagged with the prior version to be fixed (`tags/v1.4`), and create a new hotfix branch
-from it (`-b hotfix/v1.4/fix-typo`):
+Either way, we will want to create a new branch starting at the commit that the v1.4 tag points to.
+Here's how to do that:
 
 ```
 git fetch --all --tags
-git checkout tags/v1.4 -b hotfix/v1.4/fix-typo
+git checkout tags/v1.4 -b release/v1.4
 ```
 
 Now the git diagram looks like this:
 
 ```
-             hotfix/v1.4/fix-typo
+             release/v1.4
 o--o--o--o--o
             | 
             |
             tag:v1.4
 ```
 
-Contribute any commits to fix the problems with version `1.4.0`:
+
+### One-Off HotFix
+
+Let's walk through how to deploy a fix for version 1.4.0 that only affects version 1.x and below
+(and does not affect later versions, 2.x+).
+
+Starting from branch `release/v1.4`, create a new hotfix branch:
 
 ```
-                     hotfix/v1.4/fix-typo
+git checkout -b hotfix/v1.4/fix-typos
+```
+
+Now the git diagram looks like this:
+
+```
+             hotfix/v1.4/fix-typos
+             release/v1.4
+o--o--o--o--o
+            | 
+            |
+            tag:v1.4
+```
+
+Contribute typo fixes to version `1.4.0` with `git commit` commands:
+
+```
+                     hotfix/v1.4/fix-typos
+               o--o--o
+              /
+             /
+o--o--o--o--o release/v1.4
+            | 
+            |
+            tag:v1.4
+```
+
+Once all commits have been added to the hotfix and it is ready to merge back into
+the release branch, open a pull request to merge `hotfix/v1.4/fix-typos` into `release/v1.4`,
+or alternatively, merge it in with the following commands:
+
+```
+git checkout release/v1.4
+git merge --no-ff hotfix/v1.4/fix-typos
+```
+
+Now the git diagram looks like this:
+
+```
+                      hotfix/v1.4/fix-typos
+               o--o--o
+              /       \
+             /         \
+o--o--o--o--o ----------o
+            |            release/v1.4
+            |
+            tag:v1.4
+```
+
+You are ready to run bump2version to bump the patch version, `1.4.0` to `1.4.1`,
+and update the `v1.4` git tag to point to the new commit:
+
+```
+# start with a dry run
+make dryrun_bump_patch_version
+
+# do it really
+make bump_patch_version
+```
+
+(Note: we do not want to cut a release to main, because a newer version has already
+been cut to main.)
+
+
+### Upstream HotFix
+
+Now let's walk through a hotfix that affects both 1.4.0 and 2.0.0.
+
+Revisiting the git diagram:
+
+```
+                    main
+                    tag:v2.0
+                    |    
               o--o--o
              /
 o--o--o--o--o
-            | 
+            |
             |
             tag:v1.4
 ```
 
+We can start at the common ancestor commit, which in this case is git tag v1.4.
+
+We check out the hotfix branch directly from that git tag:
+
+````
+git fetch --all --tags
+git checkout tags/v1.4 -b hotfix/fix-typos
+```
+
+#### Contribute Typo Fixes
+
+Contribute typo fixes to the hotfix branch with `git commit` commands:
+
+```
+                    main
+                    tag:v2.0
+                    |    
+              o--o--o
+             /              hotfix/fix-typos
+o--o--o--o--o--------o--o--o
+            |
+            |
+            tag:v1.4
+```
+
+Now we have to merge the hotfix into any older versions that are affected
+(and their version number bumped), and merge the hotfix into the latest
+version if it is affected (and its version number bumped). If the latest
+branch is updated, a new release should also be cut to main.
+
+#### Merge Fixes to Older Version
+#### Merge Fixes Upstream to Newer Version
+
+Now we have to merge the hotfix changes into the tagged prior versions,
+and bump the version number, and if this is the latest branch, cut a new
+release to main.
+
+Start with the oldest version:
+
+```
+git fetch --all --tags
+git checkout tags/v1.4 -b release/v1.4
+git merge --no-ff hotfix/fix-typos
+```
+
+which will result in this git diagram:
 
 
+```
+                    main
+                    tag:v2.0
+                    |    
+              o--o--o
+             /              hotfix/fix-typos
+o--o--o--o--o--------o--o--o
+            |\              \
+            | \--------------o
+            |                 release/v1.4
+            tag:v1.4
+```
+
+Now run bump2version to bump the patch version, `1.4.0` to `1.4.1`,
+and update the `v1.4` git tag to point to the new commit:
+
+```
+# start with a dry run
+make dryrun_bump_patch_version
+
+# do it really
+make bump_patch_version
+```
+
+(Note: we do not want to cut a release to main, because a newer version has already
+been cut to main.)
+
+This results in:
+
+```
+                    main
+                    tag:v2.0
+                    |    
+              o--o--o
+             /              hotfix/fix-typos
+o--o--o--o--o--------o--o--o
+             \              \
+              \--------------o
+                             | release/v1.4
+                             |
+                             |
+                             tag:v1.4
+```
+
+#### Merge Upstream to Newer Version
+
+Similarly, the hotfix can be merged into v2.0:
+
+```
+git fetch --all --tags
+git checkout tags/v2.0 -b release/v2.0
+git merge --no-ff hotfix/fix-typos
+```
+
+This results in:
+
+```
+                    main
+                    tag:v2.0
+                    |         release/v2.0
+              o--o--o--------o
+             /              /
+o--o--o--o--o--------o--o--o hotfix/fix-typos
+             \              \
+              \--------------o
+                             | release/v1.4
+                             |
+                             |
+                             tag:v1.4
+```
+
+Now run bump2version to bump the patch version, `2.0.0` to `2.0.1`,
+and update the `v2.0` git tag to point to the new commit:
+
+```
+# start with a dry run
+make dryrun_bump_patch_version
+
+# do it really
+make bump_patch_version
+```
+
+Finally, because this is the latest version, run make release to cut
+the newest release to the main branch:
+
+```
+make release
+```
 
