@@ -116,12 +116,14 @@ if [[ ${DRYRUN:-} == true ]]; then
 	else
 		echo "mike deploy $(cat VERSION)"
 	fi
+	echo "git push ${REMOTE} gh-pages"
 else
 	if [[ ${TAGONLY:-} == false ]]; then
 		mike deploy $(cat VERSION) latest
 	else
 		mike deploy $(cat VERSION)
 	fi
+	git push ${REMOTE} gh-pages
 fi
 
 ############## Strap in
@@ -133,23 +135,26 @@ if [[ ${DRYRUN:-} == true ]]; then
 	echo "git -c advice.detachedHead=false checkout ${REMOTE}/$PROMOTE_FROM_BRANCH"
 	if [[ ${TAGONLY:-} == false ]]; then
 		echo "git checkout -B $PROMOTE_DEST_BRANCH"
-	fi
-	echo "git tag $RELEASE_TAG"
-	if [[ ${TAGONLY:-} == false ]]; then
 		echo "git push --force $REMOTE $PROMOTE_DEST_BRANCH"
 	fi
+	echo "git tag $RELEASE_TAG"
 	echo "git push --tags $REMOTE"
 	echo
 else
 	git fetch --all
+	# This is the reason you need to have all local changes committed and pushed to the remote:
+	# we are checking out a fresh, clean version of the source branch from the remote.
 	git -c advice.detachedHead=false checkout ${REMOTE}/$PROMOTE_FROM_BRANCH
 	if [[ ${TAGONLY:-} == false ]]; then
+		# We are cutting a release to destination branch, so force the (local) destination branch
+		# pointer to point to the source branch (which we checked out from remote with prior command).
 		git checkout -B $PROMOTE_DEST_BRANCH
-	fi
-	git tag $RELEASE_TAG
-	if [[ ${TAGONLY:-} == false ]]; then
+		# Force push the remote destination branch to match the local destination branch,
+		# (which we forced to point to the source branch with prior command).
 		git push --force $REMOTE $PROMOTE_DEST_BRANCH
 	fi
+	# Create and push tag from the latest version: vX.Y.Z
+	git tag $RELEASE_TAG
 	git push --tags $REMOTE
 fi
 echo "Done. Success. Thank you. Goodbye."
