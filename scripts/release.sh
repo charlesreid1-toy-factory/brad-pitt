@@ -17,6 +17,7 @@ fi
 # and passes on positional arguments as $1, $2, etc.
 if [[ $# > 0 ]]; then
     DRYRUN=
+	TAGONLY=
     POSITIONAL=()
     while [[ $# > 0 ]]; do
         key="$1"
@@ -40,17 +41,19 @@ fi
 
 POSITIONAL=
 
-if [[ ${DRYRUN:-} == false ]]; then
+if [[ "${DRYRUN}" == "" ]]; then
 	set +x
 	echo "No --dry-run flag detected, performing real git actions"
 	set -x
 fi
 
-if [[ ${TAGONLY:-} == false ]]; then
+if [[ "${TAGONLY}" == "" ]]; then
 	set +x
 	echo "No --tag-only flag detected, cutting release to main"
 	set -x
 fi
+
+exit 1;
 
 ############## Checks
 
@@ -128,46 +131,41 @@ fi
 # 
 # Add the latest shortcut whenever we're cutting a release to main.
 
-if [[ ${DRYRUN:-} == true ]]; then
+if [[ "${DRYRUN}" == "" ]]; then
+	# real thing
+	mkdocs build --strict --clean
+
+	if [[ "${TAGONLY}" == "" ]]; then
+		# cutting release to main, so include latest shortcut
+		mike deploy ${MIKE_TAG} latest
+	else
+		mike deploy ${MIKE_TAG}
+	fi
+
+	git push ${REMOTE} gh-pages
+else
+	# dry run
 	set +x
 	mkdocs build --strict --clean
-	if [[ ${TAGONLY:-} == false ]]; then
+
+	if [[ "${TAGONLY}" == "" ]]; then
+		# cutting release to main, so include latest shortcut
 		echo "mike deploy ${MIKE_TAG} latest"
 	else
 		echo "mike deploy ${MIKE_TAG}"
 	fi
 	echo "git push ${REMOTE} gh-pages"
-else
-	mkdocs build --strict --clean
-	if [[ ${TAGONLY:-} == false ]]; then
-		mike deploy ${MIKE_TAG} latest
-	else
-		mike deploy ${MIKE_TAG}
-	fi
-	git push ${REMOTE} gh-pages
 fi
 
 ############## Strap in
 
-if [[ ${DRYRUN:-} == true ]]; then
-	set +x
-	echo "DRY RUN DETECTED, PRINTING A DRY RUN OF ALL COMMANDS THAT WOULD HAVE BEEN RUN"
-	echo
-	echo "git fetch --all"
-	echo "git -c advice.detachedHead=false checkout ${REMOTE}/$PROMOTE_FROM_BRANCH"
-	if [[ ${TAGONLY:-} == false ]]; then
-		echo "git checkout -B $PROMOTE_DEST_BRANCH"
-		echo "git push --force $REMOTE $PROMOTE_DEST_BRANCH"
-	fi
-	echo "git tag $RELEASE_TAG"
-	echo "git push --tags $REMOTE"
-	echo
-else
+if [[ "${DRYRUN}" == "" ]]; then
+	# real thing
 	git fetch --all
 	# This is the reason you need to have all local changes committed and pushed to the remote:
 	# we are checking out a fresh, clean version of the source branch from the remote.
 	git -c advice.detachedHead=false checkout ${REMOTE}/$PROMOTE_FROM_BRANCH
-	if [[ ${TAGONLY:-} == false ]]; then
+	if [[ "${TAGONLY}" == "" ]]; then
 		# We are cutting a release to destination branch, so force the (local) destination branch
 		# pointer to point to the source branch (which we checked out from remote with prior command).
 		git checkout -B $PROMOTE_DEST_BRANCH
@@ -178,6 +176,21 @@ else
 	# Create and push tag from the latest version: vX.Y.Z
 	git tag $RELEASE_TAG
 	git push --tags $REMOTE
+else
+	# dry run
+	set +x
+	echo "DRY RUN DETECTED, PRINTING A DRY RUN OF ALL COMMANDS THAT WOULD HAVE BEEN RUN"
+	echo
+	echo "git fetch --all"
+	echo "git -c advice.detachedHead=false checkout ${REMOTE}/$PROMOTE_FROM_BRANCH"
+	if [[ "${TAGONLY}" == "" ]]; then
+		echo "git checkout -B $PROMOTE_DEST_BRANCH"
+		echo "git push --force $REMOTE $PROMOTE_DEST_BRANCH"
+	fi
+	echo "git tag $RELEASE_TAG"
+	echo "git push --tags $REMOTE"
+	echo
+else
 fi
 set +x
 echo "Done. Success. Thank you. Goodbye."
