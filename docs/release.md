@@ -63,8 +63,23 @@ When develop has accumulated enough features and fixes for a new
 release, create a final branch for the release of the next major or
 minor version `X.Y`.
 
-Add any changes to prepare for the final release, including updating
-the CHANGELOG and updating dependencies.
+Starting from the develop branch,
+
+```
+git checkout -b prepare-release-vX.Y
+```
+
+which results in
+
+```
+        prepare-release-vX.Y
+--o--o--o
+        develop
+```
+
+Now you are ready to prepare changes for the final release.
+Add any changes for the final release, including updating
+the CHANGELOG and updating dependencies in requirements.txt files.
 
 ```
                 prepare-release-vX.Y
@@ -74,29 +89,34 @@ the CHANGELOG and updating dependencies.
         develop
 ```
 
-Merge this final release branch into develop:
+Create a pull rrequest from this release preparation branch.
+When approved and merged into develop, the develop branch will be
+ready for a new release to be cut:
 
 ```
-                
+                prepare-release-vX.Y               
 		  o--o--o
          /		 \
 --o--o--o---------o
                   develop
 ```
 
-The repo is now ready to cut a new release to main.
+The repo is now ready to cut a new release `X.Y` to the main branch.
 
 
-## Cutting a Major/Minor Release
+## Bumping the Version Number
 
-The repository has been prepared for release `X.Y`,
-so the last remaining step is to actually bump the version.
+The repository's `develop` branch has been prepared for release `X.Y`,
+so the last remaining step is to actually bump the version number.
 
-We also create a git tag to easily find this commit,
-and update the main branch to point to the latest
-released version.
+We also want to create a git tag to easily point to this release version.
 
-There are several make rules provided to do this.
+Lastly, we want to update the `main` branch to point to the latest released
+version, so that when people clone it, they obtain the latest release.
+
+There are several make rules that will bump the verison number, create a commit,
+and create a git tag. We cover those below. We also show how to update the
+`main` branch to point to the latest release.
 
 ### Dry Run
 
