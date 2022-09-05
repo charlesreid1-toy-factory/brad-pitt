@@ -1,10 +1,15 @@
 !!! success "Welcome!"
 
-     Sed pellentesque quam neque, nec consequat erat lacinia at. Ut dignissim nec ipsum eget volutpat. Nullam sem
-     felis, venenatis sed magna a, dictum convallis mi. Nunc non felis tincidunt, dictum erat a, scelerisque lacus.
+     This is the documentation for the `brad_pitt` Python library.
 
-     **If you are looking for the API documentation for the `brad_pitt` library, head over to the [API Reference](api.md)
-     page.**
+     Most of this documentation is nonsense, but the `Developers` section
+     contains real, useful documentation.
+
+     **If you are looking for the API documentation for the `brad_pitt` library,
+     head over to the [API Reference](api.md) page.**
+
+     **If you are looking for an explanation of the branch and release process,
+     head over to the [Release Process](release.md) page.**
 
 # Et frontem nobis pelates
 
