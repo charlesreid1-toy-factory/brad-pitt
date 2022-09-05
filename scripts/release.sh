@@ -88,6 +88,7 @@ if [[ "$(git log ${REMOTE}/${PROMOTE_FROM_BRANCH}..HEAD)" ]]; then
 fi
 
 RELEASE_TAG="v$(cat VERSION)"
+MIKE_TAG="$(cat VERSION | cut -d. -f1,2)"
 
 # Check for commits on destination branch not on source branch
 if [[ "$(git --no-pager log --graph --abbrev-commit --pretty=oneline --no-merges -- $PROMOTE_DEST_BRANCH ^$PROMOTE_FROM_BRANCH)" != "" ]]; then
@@ -119,9 +120,9 @@ if [[ ${DRYRUN:-} == true ]]; then
 	set +x
 	mkdocs build --strict --clean
 	if [[ ${TAGONLY:-} == false ]]; then
-		echo "mike deploy $(cat VERSION) latest"
+		echo "mike deploy ${MIKE_TAG} latest"
 	else
-		echo "mike deploy $(cat VERSION)"
+		echo "mike deploy ${MIKE_TAG}"
 	fi
 	echo "git push ${REMOTE} gh-pages"
 else
