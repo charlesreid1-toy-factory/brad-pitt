@@ -8,6 +8,10 @@
     :docstring:
     :members:
 
+::: brad_pitt.Gamma
+    :docstring:
+    :members:
+
 ## Exceptions
 
 brad_pitt.PittFall
