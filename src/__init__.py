@@ -4,4 +4,4 @@ from .beta import Beta
 from .gamma import Gamma
 
 
-__version__ = "0.6.2"
+__version__ = "0.6.3"

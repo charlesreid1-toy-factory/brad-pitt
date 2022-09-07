@@ -1,6 +1,6 @@
 # brad-pitt
 
-<img alt="version-0.6.2" src="https://img.shields.io/badge/version-0.6.2-orange" />
+<img alt="version-0.6.3" src="https://img.shields.io/badge/version-0.6.3-orange" />
 
 ![Brad Pitt](docs/img/brad.jpg)
 
