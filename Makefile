@@ -61,6 +61,7 @@ requirements-dev:
 
 build-docs: ## build local copy of mkdocs documentation
 	rm -fr site/*
+	make build
 	mkdocs build --clean
 
 serve-docs: docs ## serve local copy of mkdocs documentation
