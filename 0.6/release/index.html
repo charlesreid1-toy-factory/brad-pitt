@@ -594,6 +594,7 @@ These can complicate the branches, so we treat them separately. See
 <p>For documentation and artifact releases, see <a href="../artifact_releases/">Artifact Release Process</a>.</p>
 <h2 id="cheat-sheet">Cheat Sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <p>Use this for reference once you've gone through the steps below.</p>
+<p>(The following commands expect that your remote is named <code>gh</code> not <code>origin</code>.)</p>
 <div class="highlight"><pre><span></span><code># make sure you can use the Makefile
 source environment
 
@@ -618,6 +619,10 @@ git push gh release-prep-vX.Y
 # release-prep-vX.Y
 # and get it merged into develop
 ##################
+
+# update develop branch locally
+git checkout develop
+git pull gh develop
 
 # run this from the develop branch:
 # generate and deploy assets/documentation,
