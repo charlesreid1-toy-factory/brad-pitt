@@ -23,6 +23,8 @@ For documentation and artifact releases, see [Artifact Release Process](artifact
 
 Use this for reference once you've gone through the steps below.
 
+(The following commands expect that your remote is named `gh` not `origin`.)
+
 ```
 # make sure you can use the Makefile
 source environment
@@ -48,6 +50,10 @@ git push gh release-prep-vX.Y
 # release-prep-vX.Y
 # and get it merged into develop
 ##################
+
+# update develop branch locally
+git checkout develop
+git pull gh develop
 
 # run this from the develop branch:
 # generate and deploy assets/documentation,
