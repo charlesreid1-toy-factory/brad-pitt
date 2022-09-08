@@ -24,8 +24,11 @@ The latest documentation can be obtained by appending `/latest/` to the end of t
 GitHub Pages URL, or by adding `/major.minor` to the URL:
 
 * <https://charlesreid1-toy-factory.github.io/brad-pitt/latest/>
+* <https://charlesreid1-toy-factory.github.io/brad-pitt/0.6/>
+* <https://charlesreid1-toy-factory.github.io/brad-pitt/0.5/>
+* <https://charlesreid1-toy-factory.github.io/brad-pitt/0.4/>
+* <https://charlesreid1-toy-factory.github.io/brad-pitt/0.3/>
 * <https://charlesreid1-toy-factory.github.io/brad-pitt/0.2/>
-
 
 ## Quick Start
 
