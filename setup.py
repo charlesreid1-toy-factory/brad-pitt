@@ -11,7 +11,7 @@ setup(
     version=__version__,
     description="a super simple python package demonstrating best practices for versioning",
     author="Chaz Reid",
-    author_email="charlesreid1.ancestry@ancestry.com",
+    author_email="charlesreid1@gmail.com",
     url="https://github.com/charlesreid1-toy-factory/brad-pitt",
     packages=["brad_pitt"],
     package_dir={"brad_pitt": "src"},
