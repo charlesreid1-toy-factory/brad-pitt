@@ -18,9 +18,3 @@
     :docstring:
     :members:
 
-## Exceptions
-
-brad_pitt.PittFall
-docstring
-members
-
